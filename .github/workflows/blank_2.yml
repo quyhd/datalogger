@@ -1,14 +1,13 @@
 name: CI 2
 on:
-  workflow_call:
-    inputs:
-      token-test:
-        description: "token value"
-        required: true
-        type: string
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
+      inputs:
+        token-test:
+          description: "token value"
+          required: true
+          type: string
 
 jobs:
   build-test:
@@ -17,6 +16,6 @@ jobs:
       - name: Run a one-line script
         env: 
           WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }}
-        if: ${{ inputs.token-test }} ==  env.WHO_TO_TRUST
-        run: echo Hello, world!
+        if: ${{ github.event.inputs.token-test }} ==  env.WHO_TO_TRUST
+        run: echo "${{ github.event.inputs.message }}"
 
