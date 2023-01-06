@@ -10,13 +10,14 @@ on:
           type: string
 
 jobs:
-  build-test:
-    env: 
-      WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }}  
+  build-test: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+#       - uses: actions/checkout@v2
       - name: Run a one-line script
+        env: 
+          WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }} 
+        
+        if: ${{ github.event.inputs.token-test }} ==  env.WHO_TO_TRUST
         run: echo "${{ github.event.inputs.token-test }}"
-        if: ${{ github.event.inputs.token-test }} ==  ${{env.WHO_TO_TRUST}}
 
