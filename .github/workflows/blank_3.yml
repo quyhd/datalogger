@@ -1,0 +1,16 @@
+name: 【Production】Deploy ECR, ECS, SAM template
+on:
+  push:
+    branches:
+      - master
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    name: Deploy the image to ECR then update ECS task definition, deploy lambda functions.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        run: echo "uuuuu"
