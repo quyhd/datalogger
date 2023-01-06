@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Configure AWS credentials
-        run: echo "uuuuu"
+        run: echo "uuuau"
