@@ -10,19 +10,8 @@ on:
           type: string
 
 jobs:
-#   check-secret:
-#     runs-on: ubuntu-latest
-#     outputs:
-#       my-key: ${{ steps.my-key.outputs.defined }}
-#     steps:
-#         - id: my-key
-#           env:
-#               MY_KEY: ${{ secrets.ACTION_TOKEN }}
-#           if: "${{ env.MY_KEY != '' }}"
-#           run: echo "::set-output name=defined::true"
   build-test: 
     runs-on: ubuntu-latest
-#     needs: [check-secret]
     steps:
       - name: Run a one-line script
         env:
