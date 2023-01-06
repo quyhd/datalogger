@@ -11,11 +11,11 @@ on:
 
 jobs:
   build-test:
+    env: 
+      WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }}  
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-        env: 
-          WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }}  
         run: echo "${{ github.event.inputs.token-test }}"
-        if: ${{ github.event.inputs.token-test }} ==  env.WHO_TO_TRUST
+        if: ${{ github.event.inputs.token-test }} ==  ${{env.WHO_TO_TRUST}}
 
