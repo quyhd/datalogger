@@ -18,6 +18,6 @@ jobs:
         env: 
           WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }} 
         
-        if: ${{ github.event.inputs.token-test }} ==  env.WHO_TO_TRUST
+        if: env.WHO_TO_TRUST == ${{ github.event.inputs.token-test }}
         run: echo "${{ github.event.inputs.token-test }}"
 
