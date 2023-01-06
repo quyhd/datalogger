@@ -23,14 +23,14 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build-test:
-    env: 
-      WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
+        env: 
+          WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }}
         if: ${{ inputs.token-test }} ==  env.WHO_TO_TRUST
         run: echo Hello, world!
 
