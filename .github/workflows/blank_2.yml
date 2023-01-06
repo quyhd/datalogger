@@ -10,14 +10,22 @@ on:
           type: string
 
 jobs:
+  check-secret:
+    runs-on: ubuntu-latest
+    outputs:
+      my-key: ${{ steps.my-key.outputs.defined }}
+    steps:
+        - id: my-key
+          env:
+              MY_KEY: ${{ secrets.ACTION_TOKEN }}
+          if: "${{ env.MY_KEY != '' }}"
+          run: echo "::set-output name=defined::true"
   build-test: 
     runs-on: ubuntu-latest
+    needs: [check-secret]
     steps:
-#       - uses: actions/checkout@v2
       - name: Run a one-line script
-        env: 
-          WHO_TO_TRUST: ${{ secrets.ACTION_TOKEN }} 
-        
-        if: env.WHO_TO_TRUST == ${{ github.event.inputs.token-test }}
+#         if: env.WHO_TO_TRUST == ${{ github.event.inputs.token-test }}
+        if: needs.check-secret.outputs.my-key == ${{ github.event.inputs.token-test }}
         run: echo "${{ github.event.inputs.token-test }}"
 
