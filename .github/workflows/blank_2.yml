@@ -14,12 +14,12 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  call-workflow-passing-data:
-    uses: octo-org/datalogger/.github/workflows/blank_2.yml@main
-    with:
-      config-path: .github/workflows/blank_2.yml
-    secrets:
-      envPAT: ${{ secrets.envPAT }}
+#   call-workflow-passing-data:
+#     uses: octo-org/datalogger/.github/workflows/blank_2.yml@main
+#     with:
+#       config-path: .github/workflows/blank_2.yml
+#     secrets:
+#       envPAT: ${{ secrets.envPAT }}
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
